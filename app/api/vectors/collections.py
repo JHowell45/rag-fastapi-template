@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 from app.dependencies.chroma import ChromaClientDep
 
-router = APIRouter(prefix="/collections")
+router = APIRouter(prefix="/collections", tags=["Collections"])
 
 
 class ShowCollectionResponse(BaseModel):

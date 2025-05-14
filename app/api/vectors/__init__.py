@@ -1,13 +1,14 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from app.api.vectors import collections, store
+from app.api.vectors import collections, search, store
 from app.dependencies.chroma import ChromaClientDep
 
 router = APIRouter(prefix="/vector", tags=["Vectors"])
 
 router.include_router(store.router)
 router.include_router(collections.router)
+router.include_router(search.router)
 
 
 class ChromaHeartbeatResponse(BaseModel):
