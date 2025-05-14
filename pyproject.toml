@@ -8,5 +8,6 @@ dependencies = [
     "chromadb>=0.6.3",
     "fastapi[standard]>=0.115.12",
     "ollama>=0.4.8",
+    "pydantic-settings>=2.9.1",
     "sentence-transformers>=4.1.0",
 ]
