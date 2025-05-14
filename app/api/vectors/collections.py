@@ -14,9 +14,11 @@ class CreateCollectionRequest(BaseModel):
     name: str
 
 
-@router.get("/show", response_model=ShowCollectionResponse)
-def show_collection(client: ChromaClientDep) -> ShowCollectionResponse:
-    return ShowCollectionResponse(collections=client.list_collections())
+@router.get("/show")
+def show_collection(client: ChromaClientDep):
+    print(client.list_collections())
+    return {"ok": True}
+    # return ShowCollectionResponse(collections=list(client.list_collections()))
 
 
 @router.post("/create")
