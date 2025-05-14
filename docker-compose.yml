@@ -6,5 +6,22 @@ services:
       - 11434:11434
     volumes:
       - ollama-data:/root/.ollama
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 80:80
+    command: "fastapi dev app/main.py --host 0.0.0.0 --port 80"
+    develop:
+      watch:
+        - action: sync
+          path: ./app
+          target: /app/app
+        - action: rebuild
+          path: pyproject.toml
+    depends_on:
+      - ollama
 volumes:
   ollama-data:
