@@ -16,7 +16,8 @@ class CreateCollectionRequest(BaseModel):
 
 @router.get("/show")
 def show_collection(client: ChromaClientDep):
-    print(client.list_collections())
+    collections = client.list_collections()
+    print(collections)
     return {"ok": True}
     # return ShowCollectionResponse(collections=list(client.list_collections()))
 
