@@ -25,7 +25,7 @@ services:
       - ollama
       - vdb
   vdb:
-    image: chromadb/chroma
+    image: chromadb/chroma:1.0.9
     restart: always
     ports:
       - 8000:8000
