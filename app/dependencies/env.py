@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     #######################################
     CHROMADB_HOST: str = Field(default="vdb")
     CHROMADB_PORT: int = Field(default=8000)
+    ENABLE_CHROMA_TELEMETRY: bool = False
 
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8", extra="ignore"

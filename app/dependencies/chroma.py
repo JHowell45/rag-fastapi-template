@@ -14,7 +14,7 @@ def get_chroma_client(settings: SettingsDep) -> ClientAPI:
     return chromadb.HttpClient(
         host=settings.CHROMADB_HOST,
         port=settings.CHROMADB_PORT,
-        settings=Settings(anonymized_telemetry=False),
+        settings=Settings(anonymized_telemetry=settings.ENABLE_CHROMA_TELEMETRY),
     )
 
 
