@@ -27,4 +27,4 @@ def get_env_settings() -> Settings:
     return Settings()
 
 
-SeetingsDep = Annotated[Settings, Depends(get_env_settings)]
+SettingsDep = Annotated[Settings, Depends(get_env_settings)]

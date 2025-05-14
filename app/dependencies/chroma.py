@@ -4,9 +4,11 @@ import chromadb
 from chromadb import ClientAPI
 from fastapi import Depends
 
+from app.dependencies.env import SettingsDep
 
-def get_chroma_client() -> ClientAPI:
-    return chromadb.HttpClient(host="vdb", port=8000)
+
+def get_chroma_client(settings: SettingsDep) -> ClientAPI:
+    return chromadb.HttpClient(host=settings.CHROMADB_HOST, port=settings.CHROMADB_PORT)
 
 
 ChromaClientDep = Annotated[ClientAPI, Depends[get_chroma_client]]
