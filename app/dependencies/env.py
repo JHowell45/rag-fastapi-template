@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     #######################################
     OLLAMA_HOST: str = Field(default="ollama")
     OLLAMA_PORT: int = Field(default=11434)
+    OLLAMA_MODEL: str = Field(default="llama3.2")
 
     #######################################
     # ChromaDB
