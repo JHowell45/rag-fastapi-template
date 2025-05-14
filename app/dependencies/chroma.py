@@ -6,9 +6,11 @@ from fastapi import Depends
 
 from app.dependencies.env import SettingsDep
 
+ROOT_CHROMA_COLLECTION: str = "documents"
+
 
 def get_chroma_client(settings: SettingsDep) -> ClientAPI:
     return chromadb.HttpClient(host=settings.CHROMADB_HOST, port=settings.CHROMADB_PORT)
 
 
-ChromaClientDep = Annotated[ClientAPI, Depends[get_chroma_client]]
+ChromaClientDep = Annotated[ClientAPI, Depends(get_chroma_client)]
