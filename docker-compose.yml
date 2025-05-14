@@ -23,5 +23,14 @@ services:
           path: pyproject.toml
     depends_on:
       - ollama
+      - vdb
+  vdb:
+    image: chromadb/chroma
+    restart: always
+    ports:
+      - 8000:8000
+    volumes:
+      - chroma-data;/data
 volumes:
   ollama-data:
+  chroma-data:
