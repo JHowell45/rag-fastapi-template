@@ -28,21 +28,21 @@ services:
     depends_on:
       - ollama
       - vdb
-  frontend:
-    build:
-      context: frontend
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - 80:80
-    command: "npm run serve --port 80"
-  vdb:
-    image: chromadb/chroma:1.0.9
-    restart: always
-    ports:
-      - 8000:8000
-    volumes:
-      - chroma-data:/data
+  # frontend:
+  #   build:
+  #     context: frontend
+  #     dockerfile: Dockerfile
+  #   restart: always
+  #   ports:
+  #     - 80:80
+  #   command: "npm run serve --port 80"
+  # vdb:
+  #   image: chromadb/chroma:1.0.9
+  #   restart: always
+  #   ports:
+  #     - 8000:8000
+  #   volumes:
+  #     - chroma-data:/data
 volumes:
   ollama-data:
   chroma-data:

@@ -14,7 +14,7 @@ function sendQuestion() {
     })
     .then(response => {
         console.log(response);
-        this.answer.value = response.message.content;
+        answer.value = response.data.response.message.content;
     })
     .catch(function (error) {
         console.log(error);
