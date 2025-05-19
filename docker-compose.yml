@@ -21,10 +21,10 @@ services:
     develop:
       watch:
         - action: sync
-          path: ./app
+          path: ./backend/app
           target: /app/app
         - action: rebuild
-          path: pyproject.toml
+          path: ./backend/pyproject.toml
     depends_on:
       - ollama
       - vdb

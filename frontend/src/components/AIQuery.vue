@@ -9,7 +9,7 @@ const answer = ref("")
 
 function sendQuestion() {
     console.log(question.value)
-    axios.post("http://backend:5000/api/assistant/search", {
+    axios.post("http://localhost:5000/api/assistant/search", {
         query: question.value
     })
     .then(response => {
