@@ -12,7 +12,7 @@ services:
       - ollama-data:/root/.ollama
   api:
     build:
-      context: .
+      context: backend
       dockerfile: Dockerfile
     restart: always
     ports:
