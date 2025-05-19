@@ -10,13 +10,13 @@ services:
       - 11434:11434
     volumes:
       - ollama-data:/root/.ollama
-  api:
+  backend:
     build:
       context: backend
       dockerfile: Dockerfile
     restart: always
     ports:
-      - 80:80
+      - 5000:80
     command: "fastapi dev app/main.py --host 0.0.0.0 --port 80"
     develop:
       watch:
@@ -28,6 +28,14 @@ services:
     depends_on:
       - ollama
       - vdb
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 80:80
+    command: "npm run serve --port 80"
   vdb:
     image: chromadb/chroma:1.0.9
     restart: always
