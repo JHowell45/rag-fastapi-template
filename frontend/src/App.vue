@@ -1,5 +1,6 @@
 <script setup>
 import AIQuery from './components/AIQuery.vue'
+import StoreData from './components/StoreData.vue'
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import AIQuery from './components/AIQuery.vue'
 
   <main>
     <AIQuery />
+    <StoreData />
   </main>
 </template>
 
