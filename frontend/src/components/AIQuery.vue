@@ -8,12 +8,12 @@ const question = ref("")
 const answer = ref("")
 
 function sendQuestion() {
-    console.log(question.value)
+    console.log("Sending request...")
     axios.post("http://localhost:5000/api/assistant/search", {
         query: question.value
     })
     .then(response => {
-        console.log(response);
+        console.log(response.data.response)
         answer.value = response.data.response.message.content;
     })
     .catch(function (error) {
@@ -32,7 +32,7 @@ function sendQuestion() {
         </div>
         <div>
             <h3 class="subtitle is-5">AI Response:</h3>
-            <div class="box">{{ answer }}</div>
+            <div class="box" markdown="1">{{ answer }}</div>
         </div>
     </div>
 </template>

@@ -4,12 +4,19 @@ services:
     mem_limit: 8g
     memswap_limit: 10g
     environment:
-        OLLAMA_NUM_PARALLEL: 1
+        OLLAMA_NUM_PARALLEL: 10
     restart: always
     ports:
       - 11434:11434
     volumes:
       - ollama-data:/root/.ollama
+  vdb:
+    image: chromadb/chroma:1.0.9
+    restart: always
+    ports:
+      - 8000:8000
+    volumes:
+      - chroma-data:/data
   backend:
     build:
       context: backend
@@ -23,10 +30,13 @@ services:
         - action: sync
           path: ./backend/app
           target: /app/app
+        - action: sync
+          path: ./backend/.env
+          target: /app/.env
         - action: rebuild
           path: ./backend/pyproject.toml
     depends_on:
-      - ollama
+      # - ollama
       - vdb
   # frontend:
   #   build:
@@ -36,13 +46,6 @@ services:
   #   ports:
   #     - 80:80
   #   command: "npm run serve --port 80"
-  # vdb:
-  #   image: chromadb/chroma:1.0.9
-  #   restart: always
-  #   ports:
-  #     - 8000:8000
-  #   volumes:
-  #     - chroma-data:/data
 volumes:
   ollama-data:
   chroma-data:
